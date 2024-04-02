@@ -13,7 +13,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::whereIsCompleted(true)->with('technologies')->with('type')->get();
+        $projects = Project::whereIsCompleted(true)->with('technologies')->with('type')->paginate(6);
 
         //Correggo il path delle immagini 
         foreach ($projects as $project) {
@@ -46,7 +46,7 @@ class ProjectController extends Controller
 
         //Correggo il path dell'immagine
         if ($project->image) $project->image = url('storage/' . $project->image);
-        
+
         return response()->json($project);
     }
 
