@@ -13,7 +13,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::whereIsCompleted(true)->get();
+        $projects = Project::whereIsCompleted(true)->with('technologies')->with('type')->get();
         return response()->json($projects);
     }
 
@@ -31,7 +31,7 @@ class ProjectController extends Controller
      */
     public function show(string $slug)
     {
-        $project = Project::whereIsCompleted(true)->whereSlug($slug)->first();
+        $project = Project::whereIsCompleted(true)->with('technologies')->with('type')->whereSlug($slug)->first();
         if (!$project) return response(null, 404);
         return response()->json($project);
     }
