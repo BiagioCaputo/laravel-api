@@ -13,7 +13,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::whereIsCompleted(true)->get();
         return response()->json($projects);
     }
 
