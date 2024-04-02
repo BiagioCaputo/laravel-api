@@ -14,7 +14,16 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::whereIsCompleted(true)->with('technologies')->with('type')->get();
+
+        //Correggo il path delle immagini 
+        foreach ($projects as $project) {
+            if ($project->image) $project->image = url('storage/' . $project->image);
+        };
+
+
         return response()->json($projects);
+
+        
     }
 
 
@@ -32,7 +41,12 @@ class ProjectController extends Controller
     public function show(string $slug)
     {
         $project = Project::whereIsCompleted(true)->with('technologies')->with('type')->whereSlug($slug)->first();
+
         if (!$project) return response(null, 404);
+
+        //Correggo il path dell'immagine
+        if ($project->image) $project->image = url('storage/' . $project->image);
+        
         return response()->json($project);
     }
 
