@@ -5,6 +5,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Technology extends Model
 {
     use HasFactory;
@@ -19,6 +20,6 @@ class Technology extends Model
 
     public function projects()
     {
-        return $this->belongstoMany(Project::class);
+        return $this->belongsToMany(Project::class);
     }
 }

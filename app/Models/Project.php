@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
 
+
 class Project extends Model
 {
     use HasFactory;
@@ -43,7 +44,7 @@ class Project extends Model
     //Più progetti possono avere più tecnologie
     public function technologies()
     {
-        return $this->belongstoMany(Technology::class);
+        return $this->belongsToMany(Technology::class);
     }
     
     //Query scope per is_completed

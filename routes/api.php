@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\TypeProjectController;
+use App\Http\Controllers\Api\TechnologyProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,6 @@ Route::get('/projects/{slug}', [ProjectController::class, 'show']);
 
 //Rotta per i post legati ad un tipo
 Route::get('/types/{slug}/projects', TypeProjectController::class);
+
+//Rotta per i post legati ad una tecnologia
+Route::get('/technologies/{slug}/projects', TechnologyProjectController::class);
