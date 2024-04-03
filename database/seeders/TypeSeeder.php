@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator;
 use App\Models\Type;
+use Illuminate\Support\Str;
 
 class TypeSeeder extends Seeder
 {
@@ -21,6 +22,7 @@ class TypeSeeder extends Seeder
             $type = new Type();
 
             $type->label = $label;
+            $type->slug = Str::slug($label);
             $type->color = $faker->hexColor();
 
             
