@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\TypeProjectController;
 use App\Http\Controllers\Api\TechnologyProjectController;
+use App\Http\Controllers\Api\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,6 @@ Route::get('/types/{slug}/projects', TypeProjectController::class);
 
 //Rotta per i post legati ad una tecnologia
 Route::get('/technologies/{slug}/projects', TechnologyProjectController::class);
+
+//Rotta per l'email ricevuta
+Route::post('/contact-mail', [MailController::class, 'message']);
